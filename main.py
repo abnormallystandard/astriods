@@ -14,9 +14,10 @@ def main():
                 return
             
         screen.fill("black")
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
-
+        # Framerate 60
         dt = Clock.tick(60) / 1000
 
 if __name__ == "__main__":
