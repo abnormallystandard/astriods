@@ -1,8 +1,10 @@
+import sys
 import pygame
 from constants import *
 from player import *
 from astroids import *
 from astroidfield import *
+from circleshape import *
 def main():
     pygame.init()
     Clock = pygame.time.Clock()
@@ -25,6 +27,10 @@ def main():
         screen.fill("black")
         for up in updatable:
             up.update(dt)
+        for asteroid in astroids:
+            if asteroid.collision(player):
+                print("Game Over!")
+                sys.exit()
         for dr in drawable:
             dr.draw(screen)
         pygame.display.flip()
