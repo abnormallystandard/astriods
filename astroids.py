@@ -9,3 +9,16 @@ class Astroids(CircleShape):
         pygame.draw.circle(screen, "white", self.position, self.radius, 2) 
     def update(self, dt):
         self.position += (self.velocity * dt)
+    def split(self):
+        self.kill()
+        if self.radius <= ASTEROID_MIN_RADIUS:
+            return 
+        
+        random_angle = random.uniform(20, 50)
+        astroid1 = self.velocity.rotate(random_angle)
+        astroid2 = self.velocity.rotate(-random_angle)
+        new_radius = self.radius - ASTEROID_MIN_RADIUS
+        astroid = Astroids(self.position.x, self.position.y, new_radius)
+        astroid.velocity = astroid1 * 1.2
+        astroid = Astroids(self.position.x, self.position.y, new_radius)
+        astroid.velocity = astroid2 * 1.2
