@@ -19,7 +19,7 @@ def main():
     Astroids.containers = (updatable, drawable, astroids)
     Player.containers = (updatable, drawable)
     AsteroidField.containers = (updatable)
-    Shot.containers(shot, updatable, drawable)
+    Shot.containers = (shot, updatable, drawable)
     asteroid_field = AsteroidField()
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     while True:
